@@ -4,22 +4,43 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
+  color: white;
+  flex-direction: column;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: url("../img/background_main.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  color: white;
-  flex-direction: column;
-  transition: background-image 0.3s ease-in-out;
   filter: blur(1px);
+  z-index: -1;
 }
 
 #gameScreen {
+  position: relative;
+}
+
+#gameScreen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: url("../img/background_main.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   filter: blur(1px);
+  z-index: -1;
 }
 
 #gameCanvas {

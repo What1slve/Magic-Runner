@@ -4,8 +4,7 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
-  background-color: #1a1a2e;
-  background-image: url("img/background_main.png");
+  background-image: url("./img/background_main.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -23,7 +22,7 @@ body {
 
 #gameCanvas {
   border: 2px solid transparent;
-  background-image: url("img/background_game.png");
+  background-image: url("./img/background_game.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -321,7 +320,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  background-image: url("img/background_main.png");
+  background-image: url("./img/background_main.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

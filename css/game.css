@@ -11,7 +11,7 @@ body {
   color: white;
   flex-direction: column;
   transition: background-image 0.3s ease-in-out;
-  filter: blur(2px);
+  filter: blur(1px);
 }
 
 #gameScreen {
@@ -19,7 +19,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: blur(2px);
+  filter: blur(1px);
 }
 
 #gameCanvas {

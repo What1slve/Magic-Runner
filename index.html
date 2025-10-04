@@ -1,0 +1,233 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Magic Runner with Blockchain</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/game.css">
+  <meta name="description" content="Magic Runner game with blockchain integration">
+
+  <meta property="og:title" content="Magic Runner with Blockchain">
+  <meta property="og:type" content="game">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <meta property="og:image:alt" content="">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icon.png">
+
+  <link rel="manifest" href="./site.webmanifest">
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+
+<!-- Auth Screen -->
+<div id="authScreen" class="screen">
+  <div class="auth-container">
+    <img src="./img/forMagicBlock.png" alt="For Magic Block" class="magic-block-image">
+    <img src="./img/gameName.png" alt="Magic Runner" class="game-title-image">
+    <img src="./img/byWhatislove.png" alt="By Whatislove" class="by-whatislove-image">
+    
+    <div class="auth-form">
+      <p>Connect your wallet to start playing</p>
+      
+      <div class="wallet-connection">
+        <button id="connectWalletBtn" class="wallet-btn">
+          <span class="shadow"></span>
+          <span class="edge"></span>
+          <span class="front text">Connect Wallet</span>
+        </button>
+        <p class="wallet-note">Please use Phantom wallet</p>
+      </div>
+      
+      <div id="usernameForm" class="username-form">
+        <h3>Choose your username:</h3>
+        <input type="text" id="usernameInput" placeholder="Enter username" maxlength="32">
+        <button id="registerBtn" class="register-btn">
+          <span class="shadow"></span>
+          <span class="edge"></span>
+          <span class="front text">Register & Play</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Menu Screen -->
+<div id="mainMenuScreen" class="screen hidden">
+  <div class="menu-container">
+    <img src="./img/gameName.png" alt="Magic Runner" class="game-title-image">
+    <p class="welcome-text">Welcome, <span id="playerName"></span>!</p>
+    
+    <div class="menu-buttons">
+      <button id="playGameBtn" class="menu-btn">
+        <span class="shadow"></span>
+        <span class="edge"></span>
+        <span class="front text">Play Game</span>
+      </button>
+      
+      <button id="leaderboardBtn" class="menu-btn">
+        <span class="shadow"></span>
+        <span class="edge"></span>
+        <span class="front text">Leaderboard</span>
+      </button>
+      
+      <button id="profileBtn" class="menu-btn">
+        <span class="shadow"></span>
+        <span class="edge"></span>
+        <span class="front text">Profile</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Game Screen -->
+<div id="gameScreen" class="screen hidden">
+  <canvas id="gameCanvas" width="800" height="400"></canvas>
+  
+
+  <div class="knopochki">
+    <button class="button">
+      &#8593;
+      <br>
+      jump
+    </button>
+    <p>OR</p>
+    <button class="button">
+      Space
+      <br>
+      jump
+    </button>
+    <button class="button">
+      &#8595;
+      <br>
+      down
+    </button>
+  </div>
+</div>
+
+<!-- Game Over Screen -->
+<div id="gameOverScreen" class="screen hidden">
+  <div class="game-over-container">
+    <h2 class="game-over-title">Game Over!</h2>
+    <p class="final-score">Final Score: <span id="finalScore">0</span></p>
+    
+    <div class="game-over-buttons">
+      <button id="restartGameBtn" class="game-over-btn">
+        <span class="shadow"></span>
+        <span class="edge"></span>
+        <span class="front text">Restart Game</span>
+      </button>
+      
+      <button id="submitScoreBtn" class="game-over-btn">
+        <span class="shadow"></span>
+        <span class="edge"></span>
+        <span class="front text">Submit Score</span>
+      </button>
+      
+      <button id="backToMenuFromGameOverBtn" class="game-over-btn">
+        <span class="shadow"></span>
+        <span class="edge"></span>
+        <span class="front text">Back to Menu</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Profile Screen -->
+<div id="profileScreen" class="screen hidden">
+  <div class="profile-container">
+    <h2 class="profile-title">Your Profile</h2>
+    
+    <div class="profile-info">
+      <div class="info-item">
+        <label>Username:</label>
+        <div class="username-display">
+          <span id="currentUsername"></span>
+          <button id="editUsernameBtn" class="edit-btn">Edit</button>
+        </div>
+      </div>
+      
+      <div class="info-item">
+        <label>Games Played:</label>
+        <span id="gamesPlayed">0</span>
+      </div>
+      
+      <div class="info-item">
+        <label>Best Score:</label>
+        <span id="bestScore">0</span>
+      </div>
+      
+      <div class="info-item">
+        <label>Total Score:</label>
+        <span id="totalScore">0</span>
+      </div>
+    </div>
+    
+    <div id="editUsernameForm" class="edit-form hidden">
+      <input type="text" id="newUsernameInput" placeholder="New username" maxlength="32">
+      <button id="saveUsernameBtn" class="save-btn">Save</button>
+      <button id="cancelEditBtn" class="cancel-btn">Cancel</button>
+    </div>
+    
+    <button id="backToMenuFromProfileBtn" class="back-btn">
+      <span class="shadow"></span>
+      <span class="edge"></span>
+      <span class="front text">Back to Menu</span>
+    </button>
+  </div>
+</div>
+
+<!-- Leaderboard Screen -->
+<div id="leaderboardScreen" class="screen hidden">
+  <div class="leaderboard-container">
+    <h2 class="leaderboard-title">Leaderboard</h2>
+    
+    <div class="leaderboard-stats">
+      <div class="stat-item">
+        <span class="stat-label">Total Players:</span>
+        <span id="totalPlayers" class="stat-value">0</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Total Games:</span>
+        <span id="totalGames" class="stat-value">0</span>
+      </div>
+    </div>
+    
+    <div class="leaderboard-header">
+      <div class="rank-col">Rank</div>
+      <div class="name-col">Player</div>
+      <div class="games-col">Games</div>
+      <div class="score-col">Best Score</div>
+      <div class="date-col">Record Date</div>
+    </div>
+    
+    <div id="leaderboardList" class="leaderboard-list">
+      <div class="loading">Loading leaderboard...</div>
+    </div>
+    
+    <button id="backToMenuFromLeaderboardBtn" class="back-btn">
+      <span class="shadow"></span>
+      <span class="edge"></span>
+      <span class="front text">Back to Menu</span>
+    </button>
+  </div>
+</div>
+
+<!-- Loading Screen -->
+<div id="loadingScreen" class="screen hidden">
+  <div class="loading-container">
+    <div class="loading-spinner"></div>
+    <p>Processing blockchain transaction...</p>
+  </div>
+</div>
+
+<script src="./dist/js/app.js"></script>
+
+</body>
+
+</html>
